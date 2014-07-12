@@ -7,6 +7,7 @@ edict
 
 import argparse
 import inspect
+import sys
 
 
 class Application:
@@ -56,8 +57,8 @@ class Application:
         cmd.add_arguments(parser)
         parser.set_defaults(_command=cmd)
 
-    def run(self):
-        args = self.parser.parse_args()
+    def run(self, args=None):
+        args = self.parser.parse_args(args)
         if '_command' not in args:
             self.parser.print_help();
             return 1
